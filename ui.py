@@ -1,14 +1,14 @@
 from pygame import *
 import os, sys
 
-def get_rsc_path(name):
+def get_rsc_path(name): # common function for getting the path of a resource
 	return os.path.join(os.path.dirname(__file__), 'resources/'+name)
 
-def setupsound(f):
+def setupsound(f): # load click sfx from game.py
 	global playsfx
 	playsfx = f
 
-class Grid:
+class Grid: # used to slice images 
 	def __init__(self, w, h, c):
 		self.w, self.h, self.c = w, h, c
 
@@ -19,7 +19,7 @@ class Grid:
 		except:
 			return default
 
-def scale3x(surface):
+def scale3x(surface): # all surfaces are scaled
 	w, h = surface.get_size()
 	return transform.scale(surface, (w*3, h*3))
 
@@ -41,7 +41,7 @@ anchors = {
 	'se': ( 0,  1),
 }
 
-charset = {
+charset = { # chars repartition in resources/font.png
 	'0': (0, 0), '1': (1, 0), '2': (2, 0), '3': (3, 0), '4': (4, 0),
 	'5': (5, 0), '6': (6, 0), '7': (7, 0), '8': (8, 0), '9': (9, 0),
 	'A': (0, 1), 'B': (1, 1), 'C': (2, 1), 'D': (3, 1), 'E': (4, 1),
@@ -53,7 +53,7 @@ charset = {
 	'!': (0, 4), '?': (1, 4), '(': (2, 4), ')': (3, 4), ":": (4, 4),
 }
 
-class Label(sprite.Sprite):
+class Label(sprite.Sprite): # displays text using resources/font.py
 	def __init__(self, *_, pos=(0, 0), anchor='n', text=None):
 		sprite.Sprite.__init__(self)
 		
@@ -85,7 +85,7 @@ class Label(sprite.Sprite):
 		self.rect.x = self.pos[0] - self.anchor[0]*w
 		self.rect.y = self.pos[1] - self.anchor[1]*15
 
-class Button(sprite.Sprite):
+class Button(sprite.Sprite): # same as label but reacts to mouse
 	def __init__(self, *_, pos=(0, 0), anchor='n', command=lambda: None, width=0, text=None):
 		sprite.Sprite.__init__(self)
 		
