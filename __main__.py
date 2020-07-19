@@ -1,18 +1,19 @@
 from pygame import *
 from ui import get_rsc_path
 
-mixer.pre_init(channels=3)
-init()
+mixer.pre_init(channels=3) #init audio with 3 channels
+init() # init whole engine
 
-display.set_caption("Get Out - GMTK GameJam 2020")
+display.set_caption("Get Out - GMTK GameJam 2020") # set the title of the window
 
-icon = image.load(get_rsc_path('x32.png'))
-logo = image.load(get_rsc_path('logosmall.png'))
+icon = image.load(get_rsc_path('x32.png')) # load the icon for the window
+logo = image.load(get_rsc_path('logosmall.png')) # and the loading image
 
-window = display.set_mode((520, 300), NOFRAME)
-window.blit(logo, (20, 30))
+window = display.set_mode((520, 300), NOFRAME) #open a window without border
+window.blit(logo, (20, 30)) # display the logo
 display.flip()
 
+# load game
 import game
 
 game.loadtextures()
