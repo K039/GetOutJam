@@ -9,4 +9,4 @@
     (type `pip install pygame` in a command prompt to download)
 3. download all the files from this repository
     (`game.py`, `ui.py`, `levels.py` and the `resources` folder should be in the same folder as `__main__.py`)
-4. type `python3 path/to/folder` (you need to pass the path of the **folder**) in a command prompt or open the `__main__.py` file with python
+4. type `python3 path/to/folder` (you need to pass the path of the *folder containing `__main__.py`*) in a command prompt or open the `__main__.py` file with python
