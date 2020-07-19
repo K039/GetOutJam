@@ -27,7 +27,7 @@ credits = (
 	"out of control",
 )
 
-bgroom = (
+bgroom = ( # background for the menus
 	"....................",
 	".b44444444444444448.",
 	".700000000000000005.",
@@ -50,7 +50,7 @@ bgroom = (
 	".a66666666666666669.",
 )
 
-def direction(relx, rely):
+def direction(relx, rely): # get the direction from a point to another, huge mess
 	if relx > 0:
 		a = abs(rely/relx)
 		if rely > 0:
@@ -89,7 +89,7 @@ def direction(relx, rely):
 		else:
 			return 4
 
-class Player(sprite.Sprite):
+class Player(sprite.Sprite): # player sprite
 	def __init__(self, *_, pos=(0, 0), path=[]):
 		sprite.Sprite.__init__(self)
 
@@ -174,7 +174,7 @@ class Player(sprite.Sprite):
 		self.damage = .5
 
 
-class Enemy(sprite.Sprite):
+class Enemy(sprite.Sprite): # enemy sprite
 	def __init__(self, *_, pos=(0, 0)):
 		sprite.Sprite.__init__(self)
 
@@ -252,7 +252,7 @@ class Enemy(sprite.Sprite):
 		self.damage = .2
 
 
-class Bullet(sprite.Sprite):
+class Bullet(sprite.Sprite): # bullets
 	def __init__(self, origin, direction, orient):
 		sprite.Sprite.__init__(self)
 
@@ -292,7 +292,7 @@ class Bullet(sprite.Sprite):
 			self.kill()
 		
 
-class Room(sprite.LayeredUpdates):
+class Room(sprite.LayeredUpdates): # room scene
 	def __init__(self, n, strmap, spawn, path, enemies):
 		sprite.LayeredUpdates.__init__(self)
 		self.paused = False
@@ -322,7 +322,8 @@ class Room(sprite.LayeredUpdates):
 		for enemy in self.enemies:
 			self.add(enemy)
 
-		for j, row in enumerate(self.strmap):
+			
+		for j, row in enumerate(self.strmap): # room rendering from string
 			y = 60 + j*24
 
 			line = sprite.Sprite()
